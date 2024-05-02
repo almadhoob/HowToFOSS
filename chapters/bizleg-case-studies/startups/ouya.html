@@ -1,0 +1,481 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Ouya - How To FOSS</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="This book was compiled during an Independent Study course at Rochester Institute of Technology, in conjunction with the MAGIC Center. In it, you will find a collection of information that explain how to get started in the free and open source community.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../../chapters/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../../chapters/fosswat.html"><strong aria-hidden="true">2.</strong> What is Open Source? Why? FOSS, Wat?</a></li><li class="chapter-item expanded "><a href="../../../chapters/licensing.html"><strong aria-hidden="true">3.</strong> Licensing Overview and Resources</a></li><li class="chapter-item expanded "><a href="../../../chapters/case-studies/index.html"><strong aria-hidden="true">4.</strong> Case-Studies: Past FOSS projects at RIT</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/case-studies/dash.html"><strong aria-hidden="true">4.1.</strong> Dash</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/contributing.html"><strong aria-hidden="true">5.</strong> How to Contribute to a FOSS Project</a></li><li class="chapter-item expanded "><a href="../../../chapters/projectmanagement.html"><strong aria-hidden="true">6.</strong> How to Manage a FOSS Project</a></li><li class="chapter-item expanded "><a href="../../../chapters/howtogit.html"><strong aria-hidden="true">7.</strong> How to Use Git</a></li><li class="chapter-item expanded "><a href="../../../chapters/hostingcode.html"><strong aria-hidden="true">8.</strong> How Github and other Code Hosts Work</a></li><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/index.html"><strong aria-hidden="true">9.</strong> FOSS Ecosystems</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/fossatmagic.html"><strong aria-hidden="true">9.1.</strong> FOSS@MAGIC</a></li><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/ritrc.html"><strong aria-hidden="true">9.2.</strong> Research Computing</a></li><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/coderit.html"><strong aria-hidden="true">9.3.</strong> codeRIT</a></li><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/ritwic.html"><strong aria-hidden="true">9.4.</strong> WiC</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/index.html"><strong aria-hidden="true">10.</strong> Business and Legal Profiles</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/index.html"><strong aria-hidden="true">10.1.</strong> Enterprise</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/AcquiaDrupal.html"><strong aria-hidden="true">10.1.1.</strong> Acquia / Drupal</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/openGL.html"><strong aria-hidden="true">10.1.2.</strong> Khronos Group / OpenGL</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/Canonical-Ubuntu.html"><strong aria-hidden="true">10.1.3.</strong> Canonical / Ubuntu</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/GitHub.html"><strong aria-hidden="true">10.1.4.</strong> GitHub</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/AppleWebKit.html"><strong aria-hidden="true">10.1.5.</strong> Apple / WebKit</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/debian.html"><strong aria-hidden="true">10.1.6.</strong> Debian</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/Wordpress.html"><strong aria-hidden="true">10.1.7.</strong> Wordpress</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/index.html"><strong aria-hidden="true">10.2.</strong> Fiscal Sponsorship</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/EclipseFoundation.html"><strong aria-hidden="true">10.2.1.</strong> Eclipse Foundation</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/SPI.html"><strong aria-hidden="true">10.2.2.</strong> Software in the Public Interest</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/LinuxFoundation.html"><strong aria-hidden="true">10.2.3.</strong> Linux Foundation</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/ASF.html"><strong aria-hidden="true">10.2.4.</strong> Apache Software Foundation</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/fsf.html"><strong aria-hidden="true">10.2.5.</strong> The Free Software Foundation</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/SoftwareFreedomConservancy.html"><strong aria-hidden="true">10.2.6.</strong> Software Freedom Conservancy</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/index.html"><strong aria-hidden="true">10.3.</strong> Startups/Contemporary Issues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/CodeCombat.html"><strong aria-hidden="true">10.3.1.</strong> CodeCombat</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/ouya.html" class="active"><strong aria-hidden="true">10.3.2.</strong> Ouya</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/BeagleBoard.html"><strong aria-hidden="true">10.3.3.</strong> BeagleBoard Organization</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/coinbase.html"><strong aria-hidden="true">10.3.4.</strong> Coinbase</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/Arduino.html"><strong aria-hidden="true">10.3.5.</strong> Arduino</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/Lantern.html"><strong aria-hidden="true">10.3.6.</strong> Lantern</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/raspberrypi.html"><strong aria-hidden="true">10.3.7.</strong> Raspberry Pi</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/index.html"><strong aria-hidden="true">10.4.</strong> Crowdfunding/Crowdfunded</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/bountysource.html"><strong aria-hidden="true">10.4.1.</strong> BountySource</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/patreon.html"><strong aria-hidden="true">10.4.2.</strong> Patreon</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/IndieGoGo.html"><strong aria-hidden="true">10.4.3.</strong> IndieGoGo</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/Flattr.html"><strong aria-hidden="true">10.4.4.</strong> Flattr</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/gratipay.html"><strong aria-hidden="true">10.4.5.</strong> Gratipay</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/kickstarter.html"><strong aria-hidden="true">10.4.6.</strong> Kickstarter</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/index.html"><strong aria-hidden="true">10.5.</strong> Civic Hacking/Dark Arts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/SugarOLPC.html"><strong aria-hidden="true">10.5.1.</strong> Sugar / OLPC</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/18f.html"><strong aria-hidden="true">10.5.2.</strong> 18f</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/OWASP.html"><strong aria-hidden="true">10.5.3.</strong> OWASP</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/tor.html"><strong aria-hidden="true">10.5.4.</strong> Tor</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/ushahidi.html"><strong aria-hidden="true">10.5.5.</strong> Ushahidi</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">How To FOSS</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/FOSSRIT/HowToFOSS" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="profile-ouya"><a class="header" href="#profile-ouya">Profile: Ouya</a></h1>
+<h3 id="authors"><a class="header" href="#authors">Authors</a></h3>
+<ul>
+<li><a href="http://blog-fortnight.rhcloud.com/">Fernando Ellis (fortnight)</a></li>
+<li><a href="http://www.andrewmandula.com/">Andrew Mangula (ajman1101)</a></li>
+<li><a href="http://brendan-w.com/">Brendan Whitfield (beWhitty)</a></li>
+</ul>
+<h3 id="rationale"><a class="header" href="#rationale">Rationale</a></h3>
+<blockquote>
+<p>There are <em>so</em> many subjects you could choose to profile, so why did you choose this one? What drew you into wanting to know more about the organization? How did you/your group decide on and agree?</p>
+</blockquote>
+<p>The Ouya was a popular crowdfunded game console that seemed quite promising. However, it has gained little attention over the years. We wish to know more about Ouya Inc, and any troubles it may have had.</p>
+<h2 id="organizational-details"><a class="header" href="#organizational-details">Organizational Details</a></h2>
+<blockquote>
+<p>Is the subject of your profile a corporate entity?</p>
+</blockquote>
+<p>Yes, Ouya, Inc.</p>
+<blockquote>
+<p>What type?</p>
+</blockquote>
+<p>Corporation</p>
+<blockquote>
+<p>When was it founded?</p>
+</blockquote>
+<p>July 3, 2012, although its retail released happened on June 25, 2013</p>
+<blockquote>
+<p>By whom?</p>
+</blockquote>
+<p>BOXER8, by Julie Uhrman and Yves Behar</p>
+<blockquote>
+<p>Original founder(s) still active?</p>
+</blockquote>
+<p>Both Julie Uhrman, Yves Behar are still on the team</p>
+<blockquote>
+<p>Publicly Traded? Since when? Initial Stock Price? Current stock price?</p>
+</blockquote>
+<p>No</p>
+<blockquote>
+<p>Has the company made any acquisitions? If yes, which companies, and what were their core products?</p>
+</blockquote>
+<p>No</p>
+<blockquote>
+<p>Has the company made any investments in other companies? If yes, which ones.</p>
+</blockquote>
+<p>No</p>
+<blockquote>
+<p>Number of Employees?</p>
+</blockquote>
+<p>31 employees (<a href="https://www.linkedin.com/company/ouya-inc-?trk=top_nav_home">source</a>)</p>
+<blockquote>
+<p>Where is HQ?</p>
+</blockquote>
+<pre><code>11693 San Vicente Blvd., #551
+Los Angeles, CA 90049
+USA
+</code></pre>
+<blockquote>
+<p>Does it have any other offices or locations?</p>
+</blockquote>
+<pre><code>1316 3rd Street
+Suite 109
+Santa Monica, CA 90401
+</code></pre>
+<blockquote>
+<p>Website?</p>
+</blockquote>
+<p><a href="https://www.ouya.tv/">ouya.tv</a></p>
+<blockquote>
+<p>Wikipedia?</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Ouya">Ouya</a></p>
+<blockquote>
+<p>Does your organization file any annual reports? Please include links to any relevant documents (i.e. 990, Annual Report, Year in Review, etc...)</p>
+</blockquote>
+<p>No, Ouya is a closed corporation</p>
+<h2 id="communications"><a class="header" href="#communications">Communications</a></h2>
+<h3 id="social-media-for-ouya"><a class="header" href="#social-media-for-ouya">Social media for Ouya</a></h3>
+<blockquote>
+<p>Does your subject participate in social media? If yes, please list a URL for each account, and reach within that community.</p>
+</blockquote>
+<ul>
+<li><a href="https://twitter.com/playouya">Twitter</a> - 44.3K Followers</li>
+<li><a href="https://www.facebook.com/OUYA">Facebook</a> - 99,454 Likes</li>
+<li><a href="https://instagram.com/OUYA/">Instagram</a> - 1,556 Followers</li>
+<li><a href="https://www.linkedin.com/company/ouya-inc-">Linkedin</a> - 644 Followers</li>
+<li><a href="https://plus.google.com/+OuyaTv/posts">Google</a> - 21,141 Followers</li>
+<li><a href="https://www.youtube.com/user/ouyas">Youtube</a> - 13,731 Subscribers</li>
+<li><a href="http://www.reddit.com/r/ouya">Reddit</a> - 7,978 Gamers</li>
+</ul>
+<h3 id="communications-channels-for-ouya"><a class="header" href="#communications-channels-for-ouya">Communications channels for Ouya</a></h3>
+<blockquote>
+<p>What communication channels does your subject use to reach their public? Briefly describe and include a URL for each.</p>
+</blockquote>
+<ul>
+<li><a href="https://www.ouya.tv/blog/">Ouya Blog</a> - Ouya Bloggers Julie, Bawb, James, &amp; Kellee discuss what’s new with the Ouya under the following categories: Play, Develop, News, Bawb, Events.</li>
+<li><a href="https://www.ouya.tv/shout-outs/">Ouya Shoutouts</a> - A Blog with links to any and all reviews, interviews, and stories about the community of Ouya developers.</li>
+<li><a href="http://ouyaforum.com/">Ouya developer Forum</a> - A resource for developers of games and applications of the Ouya console.</li>
+<li><a href="https://forums.ouya.tv/">Ouya Forum (unofficial)</a> - An unofficial forum for users, developers, and community leaders to communicate with.</li>
+</ul>
+<h3 id="ouya-conference-participation"><a class="header" href="#ouya-conference-participation">Ouya Conference Participation</a></h3>
+<blockquote>
+<p>Does your subject organize or participate in any conferences? If so, list them here, and provide links to any relevant sessions, keynotes, or content.</p>
+</blockquote>
+<p>As a whole organization, Ouya goes to <a href="https://www.ouya.tv/gdc2014/">GDC</a> and <a href="https://www.ouya.tv/indiecade2014/">IndieCade</a>. Also, many developers go to video game related conferences individually. Including but not limited to: GDCChina, Game Connection Europe, SBGames, IndiE3, Captivate Conference, Nordic Game Conference, XOXO Conference.</p>
+<h2 id="community-architecture"><a class="header" href="#community-architecture">Community Architecture</a></h2>
+<p><em>Your subject likely runs or contributes to one or more Open Source products or projects. Choose one (or more) of these and answer the following questions (provide links is applicable).</em></p>
+<blockquote>
+<p>The project's IRC Channel</p>
+</blockquote>
+<p>#ouya on irc.freenode.net (unofficial)</p>
+<blockquote>
+<p>Source Code repository</p>
+</blockquote>
+<p><a href="https://github.com/ouya">Github</a></p>
+<blockquote>
+<p>Mail list archive</p>
+</blockquote>
+<p>None</p>
+<blockquote>
+<p>Documentation</p>
+</blockquote>
+<ul>
+<li><a href="https://devs.ouya.tv/developers/docs">Docs</a></li>
+<li><a href="https://github.com/ouya/docs">Github</a></li>
+</ul>
+<blockquote>
+<p>Other communication channels</p>
+</blockquote>
+<p>See above</p>
+<blockquote>
+<p>Project Website and/or Blog</p>
+</blockquote>
+<p><a href="https://www.ouya.tv/">ouya.tv</a></p>
+<blockquote>
+<p>Describe the software project, its purpose and goals.</p>
+</blockquote>
+<p>Ouya SDK examples is a repo showcasing games made in various game engines for developers to see what changes are needed to port their game to the Ouya game console.</p>
+<blockquote>
+<p>Give brief history of the project. When was the Initial Commit? The latest commit?</p>
+</blockquote>
+<p>The Ouya SDK examples has its first commit on Tuesday June 4 2013. Since then, there has been a great deal of work to flesh out several example projects using a variety of technologies. Examples written in C#, JavaScript, Java, C++, and Lua. The latest commit was 20 minutes ago.</p>
+<blockquote>
+<p>Who approves patches? How many people?</p>
+</blockquote>
+<p>Nick Badal, Buddy, and Timothy Graupmann have commit access, and review/merge pull requests.</p>
+<blockquote>
+<p>Who has commit access, or has had patches accepted?  How many total?</p>
+</blockquote>
+<p>For the Ouya SDK examples, only 3 pull requests have been made. Only 4 issues have been filed, and the contributors list only has 4 people.</p>
+<blockquote>
+<p>Has there been any turnover in the Core Team? (i.e. has the top 20% of contributors stayed the same over time? If not, how has it changed?)</p>
+</blockquote>
+<p>Yes, there has been significant turnover. Most notably, Muffi Ghadiali (VP of product development) left Ouya in 2014.</p>
+<blockquote>
+<p>Does the project have a BDFL, or Lead Developer? (BDFL == Benevolent Dictator for Life)</p>
+</blockquote>
+<p>Julie Uhrman, one of the founders, and still with the company.</p>
+<blockquote>
+<p>Are the front and back end developers the same people? What is the proportion of each?</p>
+</blockquote>
+<p>The Ouya is meant to be a backend product, allowing third party developers to write their own games. Ouya’s main projects are the Ouya kernel, and the SDK examples.</p>
+<blockquote>
+<p>What have been some of the major bugs/problems/issues that have arisen during development? Who is responsible for quality control and bug repair?</p>
+</blockquote>
+<p>Most public repos have issue trackers disabled.</p>
+<p>To achieve the $100 price point, the Ouya carried a hardware payload inferior to most android phones at the time. A poorly designed controller also disincentivized the products adoption. The Ouya suffered from a limited game library. Many games were also playable on other existing consoles.</p>
+<blockquote>
+<p>How is the project's participation trending and why?</p>
+</blockquote>
+<p>The project has largely sank. It was largely attributed to a lackluster response from the development community, and bad public perception. See above for other flaws/problems with the Ouya.</p>
+<blockquote>
+<p>In your opinion, does the project pass "The Raptor Test?" (i.e. Would the project survive if the BDFL, or most active contributor were eaten by a Velociraptor?) Why or why not?</p>
+</blockquote>
+<p>Since there is a fair amount of documentation for onboarding new developers, it is likely that the public-facing project would survive the loss of the most active contributor. The internal, modified version of android, however, appears to have become proprietary.</p>
+<blockquote>
+<p>In your opinion, would the project survive if the core team, or most active 20% of contributors, were hit by a bus? Why or why not?</p>
+</blockquote>
+<p>The public-facing project would no doubt survive, since there is extensive documentation (as explained above). The internal android system, while it does not appear to be publically available, would most likely survive. The tumultuous turnover in the core development team would suggest that the project is quite capable of being handed off to new developers.</p>
+<blockquote>
+<p>Does the project have an official "on-boarding" process in place?  (new contributor guides, quickstarts, communication leads who focus specifically on newbies, etc...)</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/ouya/ouya-sdk-examples">ouya-sdk-examples</a></li>
+<li><a href="https://github.com/ouya/docs">docs</a></li>
+<li><a href="https://www.ouya.tv/develop/">developers guide</a></li>
+<li><a href="https://forums.ouya.tv/">forums</a></li>
+</ul>
+<blockquote>
+<p>Does the project have Documentation available? Is it extensive?  Does it include code examples?</p>
+</blockquote>
+<p>One of the Ouyas primary goal was to onboard new developers. See above for docs/and examples.</p>
+<blockquote>
+<p>If you were going to contribute to this project, but ran into trouble or hit blockers, who would you contact, and how?</p>
+</blockquote>
+<ul>
+<li><a href="https://forums.ouya.tv/">The Ouya developer forums</a></li>
+<li>The unofficial Ouya IRC: #ouya on freenode</li>
+</ul>
+<blockquote>
+<p>Based on these answers, how would you describe the decision making structure/process of this group?  Is it hierarchical, consensus building, ruled by a small group, barely contained chaos, or ruled by a single or pair of individuals?</p>
+</blockquote>
+<p>It is ruled by a board of directors:</p>
+<ul>
+<li>Turi Munthe</li>
+<li>Roy Bahat</li>
+<li>Amol Sarva</li>
+<li>Bing Gordon</li>
+</ul>
+<blockquote>
+<p>Is this the kind of structure you would enjoy working in? Why, or why not?</p>
+</blockquote>
+<p>No, since the primary product is not open source, and is hazily ruled by a small, ever-changing board of directors.</p>
+<h2 id="technologyproduct"><a class="header" href="#technologyproduct">Technology/Product</a></h2>
+<p><em>Section adapted from <a href="http://www.teachingcopyright.org/handout/technology-history-worksheet">EFF Worksheet</a></em></p>
+<blockquote>
+<p>Who invented, created, or sponsored the technology?</p>
+</blockquote>
+<p>The Ouya was created by the CEO of Boxer8, Julie Uhrman. It was started as an internal prototype, with Yves Behar designing the product. After making their prototype, a kickstarter was started which raised $8.6M, the initial investment into the company and product.</p>
+<blockquote>
+<p>What is the technology designed to do? How is it used?</p>
+</blockquote>
+<p>The Ouya is a micro-console, a small device that plays video games with any HDTV. THe console being mirco means that it will be easy to travel with, letting players bring their big screen gaming with them out of their home. It works like any other game console, it needs power and a TV with HDMI. The player just need standard game controllers, such as a wired Xbox 360 controller, PS3 controller, or game controllers used on PCs.</p>
+<blockquote>
+<p>Who would benefit from using this technology?</p>
+</blockquote>
+<p>Media Enthusiasts that would like one device to play all their media, games, movies, TV, and music.</p>
+<blockquote>
+<p>What kinds of companies or organizations (stakeholders) might have been concerned about the development of this technology? Why?</p>
+</blockquote>
+<p>Nvidia was originally very interested in the Ouya. In 2013, Nvidia launched the Nvidia Shield, a portable Android gaming device that uses the same hardware in the Ouya. Nvidia could have seen the Ouya as a testing ground for their own ideas about launching game hardware. Large gaming companies such as Nintendo, Sony, Microsoft, Activision, and EA were also closely watching the Ouya. This console had the possibility to disrupt their business and create a new standard for consumers playing game on their TVs.</p>
+<blockquote>
+<p>Does/Did an aspect of copyright law play a role in controversies about the technology? How?</p>
+</blockquote>
+<p>No</p>
+<h2 id="business-and-revenue-model"><a class="header" href="#business-and-revenue-model">Business and Revenue Model</a></h2>
+<blockquote>
+<p>How was this organization funded originally?</p>
+</blockquote>
+<p>It was crowdfunded using a kickstarter campaign, which raised $8.6M.</p>
+<blockquote>
+<p>How does this organization make revenue?</p>
+</blockquote>
+<p>Ouya Inc sells game consoles, controllers, and customization accessories for their hardware.</p>
+<blockquote>
+<p>Which specific Open Source Revenue Models are utilized?</p>
+</blockquote>
+<p>Selling hardware, and accessories.</p>
+<blockquote>
+<p>What investments/acquisitions has the organization made?</p>
+</blockquote>
+<p>None</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../chapters/bizleg-case-studies/startups/CodeCombat.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../../chapters/bizleg-case-studies/startups/BeagleBoard.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../chapters/bizleg-case-studies/startups/CodeCombat.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../../chapters/bizleg-case-studies/startups/BeagleBoard.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

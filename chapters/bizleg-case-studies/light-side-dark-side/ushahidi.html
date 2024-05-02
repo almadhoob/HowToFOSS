@@ -1,0 +1,475 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Ushahidi - How To FOSS</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="This book was compiled during an Independent Study course at Rochester Institute of Technology, in conjunction with the MAGIC Center. In it, you will find a collection of information that explain how to get started in the free and open source community.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../../chapters/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../../chapters/fosswat.html"><strong aria-hidden="true">2.</strong> What is Open Source? Why? FOSS, Wat?</a></li><li class="chapter-item expanded "><a href="../../../chapters/licensing.html"><strong aria-hidden="true">3.</strong> Licensing Overview and Resources</a></li><li class="chapter-item expanded "><a href="../../../chapters/case-studies/index.html"><strong aria-hidden="true">4.</strong> Case-Studies: Past FOSS projects at RIT</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/case-studies/dash.html"><strong aria-hidden="true">4.1.</strong> Dash</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/contributing.html"><strong aria-hidden="true">5.</strong> How to Contribute to a FOSS Project</a></li><li class="chapter-item expanded "><a href="../../../chapters/projectmanagement.html"><strong aria-hidden="true">6.</strong> How to Manage a FOSS Project</a></li><li class="chapter-item expanded "><a href="../../../chapters/howtogit.html"><strong aria-hidden="true">7.</strong> How to Use Git</a></li><li class="chapter-item expanded "><a href="../../../chapters/hostingcode.html"><strong aria-hidden="true">8.</strong> How Github and other Code Hosts Work</a></li><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/index.html"><strong aria-hidden="true">9.</strong> FOSS Ecosystems</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/fossatmagic.html"><strong aria-hidden="true">9.1.</strong> FOSS@MAGIC</a></li><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/ritrc.html"><strong aria-hidden="true">9.2.</strong> Research Computing</a></li><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/coderit.html"><strong aria-hidden="true">9.3.</strong> codeRIT</a></li><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/ritwic.html"><strong aria-hidden="true">9.4.</strong> WiC</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/index.html"><strong aria-hidden="true">10.</strong> Business and Legal Profiles</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/index.html"><strong aria-hidden="true">10.1.</strong> Enterprise</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/AcquiaDrupal.html"><strong aria-hidden="true">10.1.1.</strong> Acquia / Drupal</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/openGL.html"><strong aria-hidden="true">10.1.2.</strong> Khronos Group / OpenGL</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/Canonical-Ubuntu.html"><strong aria-hidden="true">10.1.3.</strong> Canonical / Ubuntu</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/GitHub.html"><strong aria-hidden="true">10.1.4.</strong> GitHub</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/AppleWebKit.html"><strong aria-hidden="true">10.1.5.</strong> Apple / WebKit</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/debian.html"><strong aria-hidden="true">10.1.6.</strong> Debian</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/Wordpress.html"><strong aria-hidden="true">10.1.7.</strong> Wordpress</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/index.html"><strong aria-hidden="true">10.2.</strong> Fiscal Sponsorship</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/EclipseFoundation.html"><strong aria-hidden="true">10.2.1.</strong> Eclipse Foundation</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/SPI.html"><strong aria-hidden="true">10.2.2.</strong> Software in the Public Interest</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/LinuxFoundation.html"><strong aria-hidden="true">10.2.3.</strong> Linux Foundation</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/ASF.html"><strong aria-hidden="true">10.2.4.</strong> Apache Software Foundation</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/fsf.html"><strong aria-hidden="true">10.2.5.</strong> The Free Software Foundation</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/SoftwareFreedomConservancy.html"><strong aria-hidden="true">10.2.6.</strong> Software Freedom Conservancy</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/index.html"><strong aria-hidden="true">10.3.</strong> Startups/Contemporary Issues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/CodeCombat.html"><strong aria-hidden="true">10.3.1.</strong> CodeCombat</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/ouya.html"><strong aria-hidden="true">10.3.2.</strong> Ouya</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/BeagleBoard.html"><strong aria-hidden="true">10.3.3.</strong> BeagleBoard Organization</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/coinbase.html"><strong aria-hidden="true">10.3.4.</strong> Coinbase</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/Arduino.html"><strong aria-hidden="true">10.3.5.</strong> Arduino</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/Lantern.html"><strong aria-hidden="true">10.3.6.</strong> Lantern</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/raspberrypi.html"><strong aria-hidden="true">10.3.7.</strong> Raspberry Pi</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/index.html"><strong aria-hidden="true">10.4.</strong> Crowdfunding/Crowdfunded</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/bountysource.html"><strong aria-hidden="true">10.4.1.</strong> BountySource</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/patreon.html"><strong aria-hidden="true">10.4.2.</strong> Patreon</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/IndieGoGo.html"><strong aria-hidden="true">10.4.3.</strong> IndieGoGo</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/Flattr.html"><strong aria-hidden="true">10.4.4.</strong> Flattr</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/gratipay.html"><strong aria-hidden="true">10.4.5.</strong> Gratipay</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/kickstarter.html"><strong aria-hidden="true">10.4.6.</strong> Kickstarter</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/index.html"><strong aria-hidden="true">10.5.</strong> Civic Hacking/Dark Arts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/SugarOLPC.html"><strong aria-hidden="true">10.5.1.</strong> Sugar / OLPC</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/18f.html"><strong aria-hidden="true">10.5.2.</strong> 18f</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/OWASP.html"><strong aria-hidden="true">10.5.3.</strong> OWASP</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/tor.html"><strong aria-hidden="true">10.5.4.</strong> Tor</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/ushahidi.html" class="active"><strong aria-hidden="true">10.5.5.</strong> Ushahidi</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">How To FOSS</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/FOSSRIT/HowToFOSS" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="profile-ushahidi"><a class="header" href="#profile-ushahidi">Profile: Ushahidi</a></h1>
+<h3 id="authors"><a class="header" href="#authors">Authors</a></h3>
+<ul>
+<li>Kocsen Chung <a href="mailto:kocsen/kocsenc@gmail.com">kocsen/kocsenc@gmail.com</a></li>
+<li>Andrew Schott <a href="mailto:snapschott/afs7827@rit.edu">snapschott/afs7827@rit.edu</a></li>
+<li>Will Paul <a href="mailto:dropofwill/whp3652@rit.edu">dropofwill/whp3652@rit.edu</a></li>
+</ul>
+<h3 id="rationale"><a class="header" href="#rationale">Rationale</a></h3>
+<blockquote>
+<p>There are <em>so</em> many subjects you could choose to profile, so why did you choose this one? What drew you into wanting to know more about the organization? How did you/your group decide on and agree?</p>
+</blockquote>
+<p>Sounded interesting, Ushahidi had a Github repo, and there seemed to be a lot of information available. Also, they sprung up out of the Kenyan 2007/8 election crisis, which Will had some background knowledge about (extended family lived there at the time).</p>
+<h2 id="organizational-details"><a class="header" href="#organizational-details">Organizational Details</a></h2>
+<blockquote>
+<p>Is the subject of your profile a corporate entity?</p>
+</blockquote>
+<p>Ushahidi is non-profit software organization.</p>
+<blockquote>
+<p>What type?</p>
+</blockquote>
+<p>They are a Florida based 501(c)(3)</p>
+<blockquote>
+<p>When was it founded?</p>
+</blockquote>
+<p>2008</p>
+<blockquote>
+<p>By whom?</p>
+</blockquote>
+<p>Founded by <a href="http://en.wikipedia.org/wiki/Erik_Hersman">Erik Hersman</a>, <a href="http://en.wikipedia.org/wiki/Ory_Okolloh">Ory Okolloh</a>, <a href="http://en.wikipedia.org/wiki/Juliana_Rotich">Juliana Rotich</a>, and <a href="http://en.wikipedia.org/wiki/David_Kobia">David Kobia</a></p>
+<blockquote>
+<p>Original founder(s) still active?</p>
+</blockquote>
+<p>Julliana is Executive Director, David is Tech lead, and Erik is on the board. Ory is no longer directly involved.</p>
+<blockquote>
+<p>Publicly Traded? Since when? Initial Stock Price? Current stock price?</p>
+</blockquote>
+<p>Not publicly traded.</p>
+<blockquote>
+<p>Has the company made any acquisitions? If yes, which companies, and what were their core products?</p>
+</blockquote>
+<p>No acquisitions.</p>
+<blockquote>
+<p>Has the company made any investments in other companies? If yes, which ones.</p>
+</blockquote>
+<p>No investments in other companies.</p>
+<blockquote>
+<p>Number of Employees?</p>
+</blockquote>
+<p>Currently 29 employees and 50 volunteers.</p>
+<blockquote>
+<p>Where is HQ?
+Does it have any other offices or locations?</p>
+</blockquote>
+<p>They are a virtual company first and foremost. A lot of people work from Kenya (esp. Nairobi) and a few other African countries, but there is also a global presence.</p>
+<blockquote>
+<p>Website?</p>
+</blockquote>
+<p><a href="http://www.ushahidi.com">Ushahidi.com</a></p>
+<blockquote>
+<p>Wikipedia?</p>
+</blockquote>
+<p><a href="http://en.wikipedia.org/wiki/Ushahidi">en.wikipedia.org/wiki/Ushahidi</a></p>
+<blockquote>
+<p>Does your organization file any annual reports? Please include links to any relevant documents (i.e. 990, Annual Report,
+Year in
+Review, etc...)</p>
+</blockquote>
+<p><a href="http://www.guidestar.org/organizations/26-2652079/ushahidi.aspx#financials">Guidestar</a> has a report from 2013 and that was the latest we could find. It showed $3,271,235 in revenue and $2,016,173 in expenses.</p>
+<h2 id="communications"><a class="header" href="#communications">Communications</a></h2>
+<h3 id="social-media-for-ushahidi"><a class="header" href="#social-media-for-ushahidi">Social media for Ushahidi</a></h3>
+<blockquote>
+<p>Does your subject participate in social media? If yes, please list a URL for each account, and reach within that community.</p>
+</blockquote>
+<ul>
+<li>
+<ul>
+<li><a href="https://twitter.com/ushahidi">Twitter: @Ushahidi</a> - 55.7K Followers.*</li>
+</ul>
+</li>
+<li>
+<ul>
+<li><a href="https://facebook.com/ushahidi">Facebook: /ushahidi</a> - 11K Followers.*</li>
+</ul>
+</li>
+<li>
+<ul>
+<li><a href="http://www.ushahidi.com/blog/">Blog: ushahidi.com/blog/</a>*</li>
+</ul>
+</li>
+</ul>
+<h3 id="communications-channels-for-ushahidi"><a class="header" href="#communications-channels-for-ushahidi">Communications channels for Ushahidi</a></h3>
+<blockquote>
+<p>What communication channels does your subject use to reach their public? Briefly describe and include a URL for each.</p>
+</blockquote>
+<ul>
+<li>IRC: freenode #ushahidi</li>
+<li>WIki: <a href="https://wiki.ushahidi.com/">wiki.ushahidi.com/</a></li>
+<li>User Forums: <a href="https://forums.ushahidi.com/">forums.ushahidi.com/</a></li>
+</ul>
+<h3 id="ushahidi-conference-participation"><a class="header" href="#ushahidi-conference-participation">Ushahidi Conference Participation</a></h3>
+<blockquote>
+<p>Does your subject organize or participate in any conferences? If so, list them here, and provide links to any relevant sessions, keynotes, or content.</p>
+</blockquote>
+<p>They do not host full scale conferences, but have done a number of meetups (organized through their <a href="http://www.meetup.com/Ushahidi-Community">meetup.com page</a>), with 68 meetups to date, averaging less than 50 attendees each.</p>
+<h2 id="community-architecture"><a class="header" href="#community-architecture">Community Architecture</a></h2>
+<blockquote>
+<p>The project's IRC Channel</p>
+</blockquote>
+<p>IRC: freenode #ushahidi</p>
+<blockquote>
+<p>Source Code repository</p>
+</blockquote>
+<p>Github organization that hosts a number of projects:</p>
+<p><a href="https://github.com/ushahidi">github.com/ushahidi</a></p>
+<blockquote>
+<p>Mail list archive</p>
+</blockquote>
+<p>N/A, they have the above mentioned forum instead.</p>
+<blockquote>
+<p>Documentation</p>
+</blockquote>
+<p>Both the <a href="https://wiki.ushahidi.com/">wiki</a> and <a href="http://www.ushahidi.com/blog/">blog</a> are informative and up to date</p>
+<blockquote>
+<p>Other communication channels</p>
+</blockquote>
+<p>Answered above.</p>
+<blockquote>
+<p>Project Website and/or Blog</p>
+</blockquote>
+<p>Hosted under the main <a href="http://www.ushahidi.com">Ushahidi site</a></p>
+<ul>
+<li>
+<p><a href="http://www.ushahidi.com/product/ushahidi/">Main product: Ushahidi</a></p>
+</li>
+<li>
+<p><a href="http://www.ushahidi.com/product/crowdmap/">Crowdmap</a></p>
+</li>
+<li>
+<p><a href="http://www.ushahidi.com/product/crisisnet/">CrisisNet</a></p>
+</li>
+<li>
+<p><a href="http://www.ushahidi.com/product/ping/">Ping</a></p>
+</li>
+<li>
+<p><a href="http://www.ushahidi.com/product/smssync/">SMSsync</a></p>
+</li>
+<li>
+<p><a href="http://www.ushahidi.com/product/brck/">BRCK</a></p>
+</li>
+</ul>
+<blockquote>
+<p>Describe the software project, its purpose and goals.
+Give brief history of the project. When was the Initial Commit? The latest commit?</p>
+</blockquote>
+<p>The Ushahidi group was formed originally to gather crisis information from the public to show what actually is happening in real time. It basically leverages the power of information carriage in places where information can be oppressed.</p>
+<p>In order to do this they provide many products like a map maker and a gather of local posts.
+A great example is Syria NET which gathers real time information from (sadly) violence and how its spreading across the Syrian land.</p>
+<p>Ushahidi has grown to be more than just focus on crisis data sources and has abstracted its way of manipulating data and extending it to other use cases.</p>
+<p>It is 100% open since it seems the organization focuses on opening the gateways of data for individuals to form accurate and transparent representations of the events that are happening.</p>
+<blockquote>
+<p>Who approves patches? How many people?
+Who has commit access, or has had patches accepted?  How many total?</p>
+</blockquote>
+<p>The 20 people in charge of commit access for Ushahidi are here: <a href="https://github.com/orgs/ushahidi/people">github.com/orgs/ushahidi/people</a></p>
+<p>14 people have had patches accepted, some within and outside of the organization.</p>
+<blockquote>
+<p>Has there been any turnover in the Core Team? (i.e. has the top 20% of contributors stayed the same over time? If not, how has it changed?)</p>
+</blockquote>
+<p>Stayed primarily the same across projects.</p>
+<blockquote>
+<p>Does the project have a BDFL, or Lead Developer? (BDFL == Benevolent Dictator for Life)</p>
+</blockquote>
+<p>David is pretty influential, but the work load is fairly spread throughout the organization.</p>
+<blockquote>
+<p>Are the front and back end developers the same people? What is the proportion of each?</p>
+</blockquote>
+<p>Not applicable to every project, but when it is they tend to be the same people for major contributors (obviously smaller contributors tend to stick with one side of platform).</p>
+<blockquote>
+<p>What have been some of the major bugs/problems/issues that have arisen during development? Who is responsible for quality control and bug repair?</p>
+</blockquote>
+<p>There are currently 200 open issues and 999 closed issues in ushahidi’s main project(https://github.com/ushahidi/Ushahidi_Web/issues) indicating that while, there bugs present in the code, the developers are actively working to maintain their projects.</p>
+<blockquote>
+<p>How is the project's participation trending and why?</p>
+</blockquote>
+<p>Downward on some projects (e.g the main platform), up on others (e.g. BRCK), it seems they focus resources on different projects as time goes on.</p>
+<blockquote>
+<p>In your opinion, does the project pass "The Raptor Test?" (i.e. Would the project survive if the BDFL, or most active contributor were eaten by a Velociraptor?) Why or why not?</p>
+</blockquote>
+<p>There are a decent number of developers with pretty large consistent commits, so it’s pretty safe to say this would survive the raptor test</p>
+<blockquote>
+<p>In your opinion, would the project survive if the core team, or most active 20% of contributors, were hit by a bus? Why or why not?</p>
+</blockquote>
+<p>Probably would take a big hit from the bus test.  Aside from the main contributors, commits are very small and inconsistent, but the project is important and serves a good cause, so the project would most likely survive</p>
+<blockquote>
+<p>Does the project have an official "on-boarding" process in place?  (new contributor guides, quickstarts, communication leads who focus specifically on newbies, etc...)</p>
+</blockquote>
+<p>Anyone can help out, <a href="https://wiki.ushahidi.com/display/WIKI/Ushahidi+v2.X+Developer+Guide">they have an onboarding guide found here</a></p>
+<blockquote>
+<p>Does the project have Documentation available? Is it extensive?  Does it include code examples?</p>
+</blockquote>
+<p>The Wiki and Forum are quite active and helpful for contributors and users (who may not be tech savvy, e.g. reporters).</p>
+<blockquote>
+<p>If you were going to contribute to this project, but ran into trouble or hit blockers, who would you contact, and how?</p>
+</blockquote>
+<p>Reach out on IRC or the forums probably.</p>
+<blockquote>
+<p>Based on these answers, how would you describe the decision making structure/process of this group? Is it hierarchical, consensus building, ruled by a small group, barely contained chaos, or ruled by a single or pair of individuals?</p>
+</blockquote>
+<p>Looks like no formal process, just make a PR and talk about until someone inside decides its good or not.</p>
+<blockquote>
+<p>Is this the kind of structure you would enjoy working in? Why, or why not?</p>
+</blockquote>
+<p>It looks like it works for this type of organization, but a more formal structure might be beneficial.</p>
+<h2 id="technologyproduct"><a class="header" href="#technologyproduct">Technology/Product</a></h2>
+<blockquote>
+<p>Who invented, created, or sponsored the technology?</p>
+</blockquote>
+<p>The Ushahidi organization.</p>
+<blockquote>
+<p>What is the technology designed to do? How is it used?</p>
+</blockquote>
+<p>It aims to provide information collection, visualisation, and interactive mapping in software to help deal with crises</p>
+<blockquote>
+<p>Who would benefit from using this technology?</p>
+</blockquote>
+<p>Anyone interested in open data, so developers, activists, reporters, just about anyone really.</p>
+<blockquote>
+<p>What kinds of companies or organizations (stakeholders) might have been concerned about the development of this technology? Why?</p>
+</blockquote>
+<p>There user base obviously, which includes some pretty big news organizations, like the BBC for example.</p>
+<blockquote>
+<p>Does/Did an aspect of copyright law play a role in controversies about the technology? How?</p>
+</blockquote>
+<p>None that we uncovered.</p>
+<h2 id="business-and-revenue-model"><a class="header" href="#business-and-revenue-model">Business and Revenue Model</a></h2>
+<blockquote>
+<p>How was this organization funded originally?</p>
+</blockquote>
+<p>Seems to have been the founders side project and then they bootstrapped into a company.</p>
+<blockquote>
+<p>How does this organization make revenue?</p>
+</blockquote>
+<p>They do custom work for organizations that do not want to the development themselves.</p>
+<blockquote>
+<p>Which specific Open Source Revenue Models are utilized?</p>
+</blockquote>
+<p>Similar to a support model, but they also do custom work.</p>
+<blockquote>
+<p>What investments/acquisitions has the organization made?</p>
+</blockquote>
+<p>N/A</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../chapters/bizleg-case-studies/light-side-dark-side/tor.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../chapters/bizleg-case-studies/light-side-dark-side/tor.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

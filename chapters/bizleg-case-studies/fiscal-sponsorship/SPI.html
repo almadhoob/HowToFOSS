@@ -1,0 +1,506 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Software in the Public Interest - How To FOSS</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="This book was compiled during an Independent Study course at Rochester Institute of Technology, in conjunction with the MAGIC Center. In it, you will find a collection of information that explain how to get started in the free and open source community.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../../chapters/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../../chapters/fosswat.html"><strong aria-hidden="true">2.</strong> What is Open Source? Why? FOSS, Wat?</a></li><li class="chapter-item expanded "><a href="../../../chapters/licensing.html"><strong aria-hidden="true">3.</strong> Licensing Overview and Resources</a></li><li class="chapter-item expanded "><a href="../../../chapters/case-studies/index.html"><strong aria-hidden="true">4.</strong> Case-Studies: Past FOSS projects at RIT</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/case-studies/dash.html"><strong aria-hidden="true">4.1.</strong> Dash</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/contributing.html"><strong aria-hidden="true">5.</strong> How to Contribute to a FOSS Project</a></li><li class="chapter-item expanded "><a href="../../../chapters/projectmanagement.html"><strong aria-hidden="true">6.</strong> How to Manage a FOSS Project</a></li><li class="chapter-item expanded "><a href="../../../chapters/howtogit.html"><strong aria-hidden="true">7.</strong> How to Use Git</a></li><li class="chapter-item expanded "><a href="../../../chapters/hostingcode.html"><strong aria-hidden="true">8.</strong> How Github and other Code Hosts Work</a></li><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/index.html"><strong aria-hidden="true">9.</strong> FOSS Ecosystems</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/fossatmagic.html"><strong aria-hidden="true">9.1.</strong> FOSS@MAGIC</a></li><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/ritrc.html"><strong aria-hidden="true">9.2.</strong> Research Computing</a></li><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/coderit.html"><strong aria-hidden="true">9.3.</strong> codeRIT</a></li><li class="chapter-item expanded "><a href="../../../chapters/ecosystems/ritwic.html"><strong aria-hidden="true">9.4.</strong> WiC</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/index.html"><strong aria-hidden="true">10.</strong> Business and Legal Profiles</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/index.html"><strong aria-hidden="true">10.1.</strong> Enterprise</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/AcquiaDrupal.html"><strong aria-hidden="true">10.1.1.</strong> Acquia / Drupal</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/openGL.html"><strong aria-hidden="true">10.1.2.</strong> Khronos Group / OpenGL</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/Canonical-Ubuntu.html"><strong aria-hidden="true">10.1.3.</strong> Canonical / Ubuntu</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/GitHub.html"><strong aria-hidden="true">10.1.4.</strong> GitHub</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/AppleWebKit.html"><strong aria-hidden="true">10.1.5.</strong> Apple / WebKit</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/debian.html"><strong aria-hidden="true">10.1.6.</strong> Debian</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/enterprise/Wordpress.html"><strong aria-hidden="true">10.1.7.</strong> Wordpress</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/index.html"><strong aria-hidden="true">10.2.</strong> Fiscal Sponsorship</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/EclipseFoundation.html"><strong aria-hidden="true">10.2.1.</strong> Eclipse Foundation</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/SPI.html" class="active"><strong aria-hidden="true">10.2.2.</strong> Software in the Public Interest</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/LinuxFoundation.html"><strong aria-hidden="true">10.2.3.</strong> Linux Foundation</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/ASF.html"><strong aria-hidden="true">10.2.4.</strong> Apache Software Foundation</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/fsf.html"><strong aria-hidden="true">10.2.5.</strong> The Free Software Foundation</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/SoftwareFreedomConservancy.html"><strong aria-hidden="true">10.2.6.</strong> Software Freedom Conservancy</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/index.html"><strong aria-hidden="true">10.3.</strong> Startups/Contemporary Issues</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/CodeCombat.html"><strong aria-hidden="true">10.3.1.</strong> CodeCombat</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/ouya.html"><strong aria-hidden="true">10.3.2.</strong> Ouya</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/BeagleBoard.html"><strong aria-hidden="true">10.3.3.</strong> BeagleBoard Organization</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/coinbase.html"><strong aria-hidden="true">10.3.4.</strong> Coinbase</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/Arduino.html"><strong aria-hidden="true">10.3.5.</strong> Arduino</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/Lantern.html"><strong aria-hidden="true">10.3.6.</strong> Lantern</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/startups/raspberrypi.html"><strong aria-hidden="true">10.3.7.</strong> Raspberry Pi</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/index.html"><strong aria-hidden="true">10.4.</strong> Crowdfunding/Crowdfunded</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/bountysource.html"><strong aria-hidden="true">10.4.1.</strong> BountySource</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/patreon.html"><strong aria-hidden="true">10.4.2.</strong> Patreon</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/IndieGoGo.html"><strong aria-hidden="true">10.4.3.</strong> IndieGoGo</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/Flattr.html"><strong aria-hidden="true">10.4.4.</strong> Flattr</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/gratipay.html"><strong aria-hidden="true">10.4.5.</strong> Gratipay</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/crowdfunding/kickstarter.html"><strong aria-hidden="true">10.4.6.</strong> Kickstarter</a></li></ol></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/index.html"><strong aria-hidden="true">10.5.</strong> Civic Hacking/Dark Arts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/SugarOLPC.html"><strong aria-hidden="true">10.5.1.</strong> Sugar / OLPC</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/18f.html"><strong aria-hidden="true">10.5.2.</strong> 18f</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/OWASP.html"><strong aria-hidden="true">10.5.3.</strong> OWASP</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/tor.html"><strong aria-hidden="true">10.5.4.</strong> Tor</a></li><li class="chapter-item expanded "><a href="../../../chapters/bizleg-case-studies/light-side-dark-side/ushahidi.html"><strong aria-hidden="true">10.5.5.</strong> Ushahidi</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">How To FOSS</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/FOSSRIT/HowToFOSS" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="profile-software-in-the-public-interest"><a class="header" href="#profile-software-in-the-public-interest">Profile: Software in the Public Interest</a></h1>
+<h3 id="authors"><a class="header" href="#authors">Authors</a></h3>
+<ul>
+<li><a href="http://blog-fortnight.rhcloud.com/">Fernando Ellis (fortnight)</a></li>
+<li><a href="http://brendan-w.com/">Brendan Whitfield (beWhitty)</a></li>
+</ul>
+<h3 id="rationale"><a class="header" href="#rationale">Rationale</a></h3>
+<blockquote>
+<p>There are <em>so</em> many subjects you could choose to profile, so why did you choose this one? What drew you into wanting to know more about the organization? How did you/your group decide on and agree?</p>
+</blockquote>
+<p>I didn’t know much about different fiscal sponsorship organizations, but the name caught my eye. If one doesn’t do things for the public interest, then what worth is there in doing them?</p>
+<h2 id="organizational-details"><a class="header" href="#organizational-details">Organizational Details</a></h2>
+<blockquote>
+<p>Is the subject of your profile a corporate entity?</p>
+</blockquote>
+<p>Yes</p>
+<blockquote>
+<p>What type?</p>
+</blockquote>
+<p>Non-profit Organization</p>
+<blockquote>
+<p>When was it founded?</p>
+</blockquote>
+<p>June 16, 1997 in the State of New York</p>
+<blockquote>
+<p>By whom?</p>
+</blockquote>
+<p>The Debian Project, with an Initial Board of Directors consisting of:</p>
+<ul>
+<li>Timothy P. Sailer</li>
+<li>Bruce Perens</li>
+<li>Ian Murdock</li>
+</ul>
+<blockquote>
+<p>Original founder(s) still active?</p>
+</blockquote>
+<p>Bdale Garbee is currently the president of Software in the Public Interest, as well as the second name in a list of contributors in the brief history of the Debian Project.</p>
+<blockquote>
+<p>Publicly Traded? Since when? Initial Stock Price? Current stock price?</p>
+</blockquote>
+<p>Not publically traded</p>
+<blockquote>
+<p>Has the company made any acquisitions? If yes, which companies, and what were their core products?</p>
+</blockquote>
+<p>No, because Software in the Public interest itself doesn’t have any products, but rather helps other organizations develop and distribute open hardware and software.</p>
+<blockquote>
+<p>Has the company made any investments in other companies? If yes, which ones.</p>
+</blockquote>
+<p>Yes, organized donations and investments is in part the organization’s role. Associated projects include, but are not limited to:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/0_A.D._(video_game)">0 A.D.</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Ankur_Group">Ankur</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Aptosid">aptosid</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Arch_Linux">Arch Linux</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Debian">Debian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Drizzle_(database_server)">Drizzle</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Drupal">Drupal</a></li>
+<li><a href="https://en.wikipedia.org/wiki/FFmpeg">FFmpeg</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Fluxbox">Fluxbox</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Freedesktop.org">freedesktop.org</a></li>
+<li><a href="https://en.wikipedia.org/wiki/FreedomBox">FreedomBox</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Gallery_Project">Gallery</a></li>
+<li><a href="https://en.wikipedia.org/wiki/GNUstep">GNUstep</a></li>
+<li><a href="https://en.wikipedia.org/wiki/GNU_TeXmacs">GNU TeXmacs</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Haskell_(programming_language)">Haskell.org</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Jenkins_(software)">Jenkins</a></li>
+<li><a href="https://en.wikipedia.org/wiki/LibreOffice">LibreOffice</a></li>
+<li><a href="https://en.wikipedia.org/wiki/MinGW">MinGW</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Open_and_Free_Technology_Community">OFTC</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Open_Bioinformatics_Foundation">Open Bioinformatics Foundation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/OpenEmbedded">OpenEmbedded</a></li>
+<li><a href="https://en.wikipedia.org/wiki/OpenVAS">OpenVAS</a></li>
+<li><a href="https://en.wikipedia.org/wiki/OpenWrt">OpenWrt</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Open64">Open64</a></li>
+<li><a href="https://en.wikipedia.org/wiki/PostgreSQL">PostgreSQL</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Privoxy">Privoxy</a></li>
+<li><a href="https://en.wikipedia.org/wiki/SproutCore">SproutCore</a></li>
+<li><a href="https://en.wikipedia.org/wiki/X.Org_Foundation">X.Org Foundation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/YafaRay">YafaRay</a></li>
+</ul>
+<blockquote>
+<p>Number of Employees?</p>
+</blockquote>
+<p>Their Officers + Board of Directors contains 9 people. There are many more contributing and noncontributing members</p>
+<blockquote>
+<p>Where is HQ?</p>
+</blockquote>
+<pre><code>Software in the Public Interest, Inc.
+P.O. Box 501248
+Indianapolis, IN 46250-6248
+United States
+</code></pre>
+<blockquote>
+<p>Does it have any other offices or locations?</p>
+</blockquote>
+<p>No. Its officers and members hail from all over the world. It is an umbrella organization that works predominantly online.</p>
+<blockquote>
+<p>Website?</p>
+</blockquote>
+<p><a href="http://spi-inc.org/">spi-inc.org</a></p>
+<blockquote>
+<p>Wikipedia?</p>
+</blockquote>
+<p><a href="http://en.wikipedia.org/wiki/Software_in_the_Public_Interest">Software in the Public Interest</a></p>
+<blockquote>
+<p>Does your organization file any annual reports? Please include links to any relevant documents (i.e. 990, Annual Report, Year in Review, etc...)</p>
+</blockquote>
+<p>Yes, although only 4 were accessible from their website:</p>
+<ul>
+<li><a href="http://spi-inc.org/corporate/annual-reports/2004.pdf">2004</a></li>
+<li><a href="http://spi-inc.org/corporate/annual-reports/2005.pdf">2005</a></li>
+<li><a href="http://spi-inc.org/corporate/annual-reports/2011.pdf">2011</a></li>
+<li><a href="http://spi-inc.org/corporate/annual-reports/2012.pdf">2012</a></li>
+</ul>
+<h2 id="communications"><a class="header" href="#communications">Communications</a></h2>
+<h3 id="social-media-for-spi"><a class="header" href="#social-media-for-spi">Social media for SPI</a></h3>
+<blockquote>
+<p>Does your subject participate in social media? If yes, please list a URL for each account, and reach within that community.</p>
+</blockquote>
+<p>No social media presence</p>
+<h3 id="communications-channels-for-spi"><a class="header" href="#communications-channels-for-spi">Communications channels for SPI</a></h3>
+<blockquote>
+<p>What communication channels does your subject use to reach their public? Briefly describe and include a URL for each.</p>
+</blockquote>
+<p><a href="http://lists.spi-inc.org/listinfo/spi-announce">SPI-Announce mailing list</a>. I don't see any attempt to actively get their name out into the world, but each of the contributing members and officers represent the organization at any meetings, workplaces, or conferences they attend.</p>
+<h3 id="spi-conference-participation"><a class="header" href="#spi-conference-participation">SPI Conference Participation</a></h3>
+<blockquote>
+<p>Does your subject organize or participate in any conferences? If so, list them here, and provide links to any relevant sessions, keynotes, or content.</p>
+</blockquote>
+<p>Not regularly, but if the officers or members attend one, they’ll relay what they’ve experienced in conferences in the organization's <a href="http://spi-inc.org/meetings/minutes/">monthly meetings</a>.</p>
+<h2 id="community-architecture"><a class="header" href="#community-architecture">Community Architecture</a></h2>
+<p><em>Your subject likely runs or contributes to one or more Open Source products or projects. Choose one (or more) of these and answer the following questions (provide links is applicable).</em></p>
+<p>Project of choice: <strong>Arch Linux</strong></p>
+<blockquote>
+<p>The project's IRC Channel</p>
+</blockquote>
+<p>#archlinux</p>
+<blockquote>
+<p>Source Code repository</p>
+</blockquote>
+<p><a href="https://projects.archlinux.org/">Source repository</a></p>
+<blockquote>
+<p>Mail list archive</p>
+</blockquote>
+<p><a href="https://lists.archlinux.org//listinfo/">Mailling list</a></p>
+<blockquote>
+<p>Documentation</p>
+</blockquote>
+<p><a href="https://wiki.archlinux.org/">wiki.archlinux.org</a></p>
+<blockquote>
+<p>Other communication channels</p>
+</blockquote>
+<p><a href="https://planet.archlinux.org/">planet.archlinux.org</a></p>
+<blockquote>
+<p>Project Website and/or Blog</p>
+</blockquote>
+<p><a href="https://www.archlinux.org/">archlinux.org</a></p>
+<blockquote>
+<p>Describe the software project, its purpose and goals.</p>
+</blockquote>
+<p>Arch is a distribution of linux that “focuses on elegance, code correctness, minimalism, and simplicity (<a href="https://en.wikipedia.org/wiki/Arch_Linux">source</a>)</p>
+<blockquote>
+<p>Give brief history of the project. When was the Initial Commit? The latest commit?</p>
+</blockquote>
+<p>Began in 2002 at the hands of Judd Vinet, who wanted to create a minimalist linux distribution. The latest commit was ~1 day ago.</p>
+<blockquote>
+<p>Who approves patches? How many people?</p>
+</blockquote>
+<p>There are different sets of developers for different Arch repos:</p>
+<ul>
+<li>[core] and [extra] have 36 developers</li>
+<li>[community] has 40 developers (also called "Trusted Users")</li>
+</ul>
+<blockquote>
+<p>Who has commit access, or has had patches accepted?  How many total?</p>
+</blockquote>
+<p>See above</p>
+<blockquote>
+<p>Has there been any turnover in the Core Team? (i.e. has the top 20% of contributors stayed the same over time? If not, how has it changed?)</p>
+</blockquote>
+<p>Judd Vinet stepped down in 2007 due to time constraints. Control was given to Aaron Griffin, who is the current leader today.</p>
+<blockquote>
+<p>Does the project have a BDFL, or Lead Developer? (BDFL == Benevolent Dictator for Life)</p>
+</blockquote>
+<p>Judd Vinet, although he has been inactive in Arch development since 2007.</p>
+<blockquote>
+<p>Are the front and back end developers the same people? What is the proportion of each?</p>
+</blockquote>
+<p>Arch linux is primarily focussed on back end development, leaving the user to install their prefered front ends. The closest thing to a frontend would be the pacman CLI, which is developed by a small subset of the primary developers.</p>
+<blockquote>
+<p>How is the project's participation trending and why?</p>
+</blockquote>
+<p>Arch still remains popular, currently in position 9 on <a href="http://distrowatch.com/">distrowatch</a></p>
+<blockquote>
+<p>In your opinion, does the project pass "The Raptor Test?" (i.e. Would the project survive if the BDFL, or most active contributor were eaten by a Velociraptor?) Why or why not?</p>
+</blockquote>
+<p>Absolutely. There are plenty of developers working on the core system, and plenty of documentation.</p>
+<blockquote>
+<p>In your opinion, would the project survive if the core team, or most active 20% of contributors, were hit by a bus? Why or why not?</p>
+</blockquote>
+<p>Since Arch has a large base of documentation, while it would hinder its growth, others would likely be able to pick up where the core team left off. After all, Arch strives for simplicity and minimalism in its code.</p>
+<blockquote>
+<p>Does the project have an official "on-boarding" process in place?  (new contributor guides, quickstarts, communication leads who focus specifically on newbies, etc...)</p>
+</blockquote>
+<p>Although Arch is not tailored for users new to linux, there is a detailed <a href="https://wiki.archlinux.org/index.php/Beginners%27_guide">Beginners Guide</a> to help new users install the OS.</p>
+<blockquote>
+<p>Does the project have Documentation available? Is it extensive?  Does it include code examples?</p>
+</blockquote>
+<p>Arch has extensive documentation in the form of a <a href="https://wiki.archlinux.org/">Wiki</a>.</p>
+<blockquote>
+<p>If you were going to contribute to this project, but ran into trouble or hit blockers, who would you contact, and how?</p>
+</blockquote>
+<ul>
+<li>IRC in #archlinux</li>
+<li><a href="https://bbs.archlinux.org/">Forums</a></li>
+</ul>
+<blockquote>
+<p>Based on these answers, how would you describe the decision making structure/process of this group?  Is it hierarchical, consensus building, ruled by a small group, barely contained chaos, or ruled by a single or pair of individuals?</p>
+</blockquote>
+<p>It is a consensus between the developers, with Aaron Griffin at the helm.</p>
+<blockquote>
+<p>Is this the kind of structure you would enjoy working in? Why, or why not?</p>
+</blockquote>
+<p>Yes, collaborating with a small set of dedicated developers would be enjoyable.</p>
+<h2 id="technologyproduct"><a class="header" href="#technologyproduct">Technology/Product</a></h2>
+<p><em>Section adapted from <a href="http://www.teachingcopyright.org/handout/technology-history-worksheet">EFF Worksheet</a></em></p>
+<blockquote>
+<p>Who invented, created, or sponsored the technology?</p>
+</blockquote>
+<p>The Debian Project, with an Initial Board of Directors consisting of:</p>
+<ul>
+<li>Timothy P. Sailer</li>
+<li>Bruce Perens</li>
+<li>Ian Murdock</li>
+</ul>
+<blockquote>
+<p>What is the technology designed to do? How is it used?</p>
+</blockquote>
+<p>Provide management of donated assets or fiscal sponsorship to it’s affiliated projects. SPI exists to organize the development and distribution of open hardware and software projects that benefit the public all over the world.</p>
+<p>SPI provides a few basic functions:</p>
+<ul>
+<li>Accepting donations and holding funds</li>
+<li>Holding substantial assets</li>
+<li>Holding Intangible assets</li>
+<li>Signing Contracts for venus/insurance</li>
+<li>Legal counsel through the Software Freedom Law Center</li>
+</ul>
+<blockquote>
+<p>Who would benefit from using this technology?</p>
+</blockquote>
+<p>Any organization looking for the benefits of the previous answer.</p>
+<blockquote>
+<p>What kinds of companies or organizations (stakeholders) might have been concerned about the development of this technology? Why?</p>
+</blockquote>
+<p>Companies or organizations of open hardware and/or software that needed would otherwise fall apart due to mismanagement of funds or product.</p>
+<blockquote>
+<p>Does/Did an aspect of copyright law play a role in controversies about the technology? How?</p>
+</blockquote>
+<p>No, the company was incorporated in 1997 as a Non-Profit Organization and has since had no financial troubles.</p>
+<h2 id="business-and-revenue-model"><a class="header" href="#business-and-revenue-model">Business and Revenue Model</a></h2>
+<blockquote>
+<p>How was this organization funded originally?</p>
+</blockquote>
+<p>SPI takes 5% of donations</p>
+<blockquote>
+<p>How does this organization make revenue?</p>
+</blockquote>
+<p>See above</p>
+<blockquote>
+<p>Which specific Open Source Revenue Models are utilized?</p>
+</blockquote>
+<p>Voluntary donations</p>
+<blockquote>
+<p>What investments/acquisitions has the organization made?</p>
+</blockquote>
+<p>None</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/EclipseFoundation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/LinuxFoundation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/EclipseFoundation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../../chapters/bizleg-case-studies/fiscal-sponsorship/LinuxFoundation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
